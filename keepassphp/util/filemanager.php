@@ -51,8 +51,8 @@ class FileManager
 
 		if(!$memonly)
 		{
-			if((is_dir($dir) || mkdir($dir, 700, true)) && $prefix != null &&
-					is_writable($dir) && $dh = opendir($dir))
+			if((is_dir($dir) || mkdir($dir, 0700, true)) && $prefix != null &&
+			is_writable($dir) && $dh = opendir($dir))
 			{
 				$this->dir = $dir . (substr($dir, -1) == "/" ? "" : "/");
 				$this->prefix = $prefix;

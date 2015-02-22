@@ -121,11 +121,16 @@ abstract class KeePassPHP
 	public static function init($debug = false)
 	{
 		if(self::$started)
-			return;
+			return ;
 		
 		self::$isError = false;
 		self::$debug = $debug;
 		self::$errordump = "";
+
+	   if (!extension_loaded("mcrypt"))
+	      self::raiseError("PHP module mcrypt not loaded.");
+	   if (!defined("MCRYPT_RIJNDAEL_128"))
+	      self::raiseError("Constant MCRYPT_RIJNDAEL_128 is not defined. Perhaps too old version of Mcrypt.");
 
 		HashHouse::setDefault(self::DEFAULT_HASH);
 		self::$iconmanager = new IconManager(self::DIR_KEEPASSPHP .
@@ -138,8 +143,9 @@ abstract class KeePassPHP
 		self::$keymanager = new UploadManager(self::DIR_KEEPASSPHP .
 			self::DIR_DATA.self::DIR_SECURE.self::DIR_KEY, self::PREFEXT_KEY);
 
-		self::$started = true;
-		self::printDebug("KeePassPHP application started !");
+		self::$started = self::$isError;
+		self::printDebug("KeePassPHP application started!");
+		return self::$started;
 	}
 
 	/****************************

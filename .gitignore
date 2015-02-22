@@ -1,4 +1,4 @@
-*.kdbx
+*.kdbxz
 .DS_Store
-test/
+testz/
 
