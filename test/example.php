@@ -6,7 +6,7 @@ require_once "../keepassphp/keepassphp.php";
 //define("DS", DIRECTORY_SEPARATOR);
 
 $dbid = "aaa";
-$pwd1 = "bbb";
+$pwd1 = "ccc";
 $mainPwd = "sample";
 $kdbxFile = "keepassphp/data/secure/kdbx/Sample.kdbx";
 $keyfile = null;
