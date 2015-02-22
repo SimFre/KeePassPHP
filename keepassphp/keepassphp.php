@@ -143,9 +143,8 @@ abstract class KeePassPHP
 		self::$keymanager = new UploadManager(self::DIR_KEEPASSPHP .
 			self::DIR_DATA.self::DIR_SECURE.self::DIR_KEY, self::PREFEXT_KEY);
 
-		self::$started = self::$isError;
+		self::$started = !self::$isError;
 		self::printDebug("KeePassPHP application started!");
-		return self::$started;
 	}
 
 	/****************************
@@ -248,7 +247,7 @@ abstract class KeePassPHP
 	{
 		if(!self::$started)
 		{
-			self::raiseError("KeepassPHP is not started !");
+			self::raiseError("KeepassPHP is not started!");
 			return null;
 		}
 
@@ -344,7 +343,7 @@ abstract class KeePassPHP
 	{
 		if(!self::$started)
 		{
-			self::raiseError("KeepassPHP is not started !");
+			self::raiseError("KeepassPHP is not started!");
 			return false;
 		}
 
@@ -390,7 +389,7 @@ abstract class KeePassPHP
 	{
 		if(!self::$started)
 		{
-			self::raiseError("KeepassPHP is not started !");
+			self::raiseError("KeepassPHP is not started!");
 			return false;
 		}
 		return self::$dbmanager->existsKey($dbid);
@@ -411,7 +410,7 @@ abstract class KeePassPHP
 	{
 		if(!self::$started)
 		{
-			self::raiseError("KeepassPHP is not started !");
+			self::raiseError("KeepassPHP is not started!");
 			return false;
 		}
 		$bindb = self::$dbmanager->getContentFromKey($dbid);
